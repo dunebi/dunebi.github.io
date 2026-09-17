@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>임준엽 — 포트폴리오</title>
+<meta name="description" content="임준엽 (Junyeop Im). NLP 연구자이자 소프트웨어 개발자. ABSA·LLM 평가 연구, C++ SDK, Flutter 앱 개발.">
+
+<!-- 한글 웹폰트 (Pretendard). 인터넷 없이 열면 시스템 폰트로 대체됩니다 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+
+<style>
+/* ============================================================
+   색상·글꼴 설정. 바꾸고 싶으면 여기 값만 수정하세요.
+   ============================================================ */
+:root{
+  --bg:#F4F5F8;        /* 페이지 배경 */
+  --paper:#FFFFFF;     /* 본문 영역 배경 */
+  --ink:#171C26;       /* 기본 글자색 */
+  --muted:#5E6673;     /* 보조 글자색 */
+  --rule:#DDE1E7;      /* 구분선 */
+  --accent:#2A52BE;    /* 강조색 (링크, 하이라이트) */
+  --accent-soft:#E6ECFA;
+  --maxw:1120px;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#111418; --paper:#181C22; --ink:#E9ECF1; --muted:#9AA3B0;
+    --rule:#2A3039; --accent:#8FA8F5; --accent-soft:#1F2A44;
+  }
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+  font-size:16px; line-height:1.65; word-break:keep-all;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--accent); text-decoration:none; border-bottom:1px solid transparent}
+a:hover, a:focus-visible{border-bottom-color:currentColor}
+a:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:2px}
+h1,h2,h3{margin:0; line-height:1.25; font-weight:700}
+p{margin:0}
+ul{margin:0; padding:0; list-style:none}
+
+/* ---------- 전체 레이아웃: 왼쪽 고정 사이드바 + 오른쪽 본문 ---------- */
+.page{max-width:var(--maxw); margin:0 auto; padding:56px 28px 96px;
+  display:grid; grid-template-columns:300px 1fr; gap:64px}
+@media (max-width:860px){
+  .page{grid-template-columns:1fr; gap:40px; padding:36px 20px 72px}
+}
+
+/* ---------- 사이드바 ---------- */
+.side{position:sticky; top:40px; align-self:start}
+@media (max-width:860px){ .side{position:static} }
+.side .name{font-size:34px; letter-spacing:-0.02em}
+.side .name small{display:block; font-size:15px; font-weight:500; color:var(--muted); letter-spacing:0; margin-top:4px}
+.side .tagline{margin-top:18px; font-size:15px; line-height:1.6; color:var(--ink)}
+.side .role{margin-top:14px; color:var(--muted); font-size:14px}
+.side .role span{display:block}
+
+.links{margin-top:28px; padding-top:20px; border-top:1px solid var(--rule)}
+.links li{display:flex; gap:12px; font-size:14px; padding:5px 0}
+.links li b{width:64px; flex:none; font-weight:600; color:var(--muted)}
+
+.nav{margin-top:28px; padding-top:20px; border-top:1px solid var(--rule)}
+.nav li a{display:block; color:var(--muted); font-size:14px; padding:4px 0; border:0}
+.nav li a:hover{color:var(--ink)}
+
+/* ---------- 본문 공통 ---------- */
+.main{min-width:0}
+section{padding:40px 0; border-top:1px solid var(--rule)}
+section:first-child{border-top:0; padding-top:0}
+section h2{font-size:22px; letter-spacing:-0.01em; margin-bottom:24px}
+.lead{color:var(--muted); font-size:15px; margin:-14px 0 24px; max-width:64ch}
+
+/* ---------- 타임라인(경력·학력처럼 시간 순서가 있는 항목) ---------- */
+.tl{display:grid; grid-template-columns:120px 1fr; gap:0 24px}
+@media (max-width:600px){ .tl{grid-template-columns:1fr} }
+.tl .when{color:var(--muted); font-size:14px; padding-top:3px; font-variant-numeric:tabular-nums}
+.tl .what{padding-bottom:32px}
+.tl .what:last-child{padding-bottom:0}
+@media (max-width:600px){ .tl .when{padding-top:0; margin-bottom:4px} .tl .what{padding-bottom:26px} }
+.tl h3{font-size:17px}
+.tl .org{color:var(--muted); font-size:14px; margin-top:2px}
+.tl .sub{margin-top:16px}
+.tl .sub h4{margin:0 0 6px; font-size:15px; font-weight:600}
+.tl .sub + .sub{margin-top:20px}
+.bul{margin-top:8px}
+.bul li{position:relative; padding-left:16px; color:var(--ink); font-size:15px; margin:4px 0}
+.bul li::before{content:""; position:absolute; left:2px; top:0.72em; width:5px; height:5px; border-radius:50%; background:var(--muted)}
+.chips{display:flex; flex-wrap:wrap; gap:6px; margin-top:10px}
+.chips span{font-size:12px; color:var(--muted); border:1px solid var(--rule); border-radius:999px; padding:2px 9px; background:var(--paper)}
+
+/* ---------- 프로젝트 목록 ---------- */
+.proj{display:grid; grid-template-columns:1fr; gap:0}
+.proj article{padding:20px 0; border-top:1px dashed var(--rule)}
+.proj article:first-child{border-top:0; padding-top:0}
+.proj h3{font-size:17px}
+.proj .meta{color:var(--muted); font-size:14px; margin-top:2px}
+.proj p.desc{margin-top:8px; font-size:15px}
+
+/* ---------- 기술 스택 ---------- */
+.stack{display:grid; grid-template-columns:150px 1fr; gap:14px 20px; font-size:15px}
+@media (max-width:600px){ .stack{grid-template-columns:1fr; gap:4px 0} .stack dd{margin-bottom:12px} }
+.stack dt{font-weight:600; color:var(--muted)}
+.stack dd{margin:0}
+
+footer{margin-top:48px; padding-top:20px; border-top:1px solid var(--rule); color:var(--muted); font-size:13px}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ==========================================================
+       왼쪽 사이드바: 이름, 한 줄 소개, 연락처, 목차
+       ========================================================== -->
+  <aside class="side">
+    <h1 class="name">임준엽<small>Junyeop Im</small></h1>
+    <p class="tagline">Aspect-Based Sentiment Analysis와 설명가능한 추천 시스템을 연구합니다.</p>
+    <p class="role">
+      <span>한양대학교 컴퓨터소프트웨어학과 석사과정</span>
+      <span>Data Intelligence Lab (지도교수 채동규)</span>
+    </p>
+
+    <ul class="links">
+      <!-- 연락처. 공개하고 싶지 않은 항목은 <li> 줄을 지우세요 -->
+      <li><b>이메일</b><a href="mailto:dunebi1030123@gmail.com">dunebi1030123@gmail.com</a></li>
+      <li><b>GitHub</b><a href="https://github.com/dunebi" target="_blank" rel="noopener">github.com/dunebi</a></li>
+    </ul>
+
+    <ul class="nav">
+      <li><a href="#research">연구</a></li>
+      <li><a href="#work">경력</a></li>
+      <li><a href="#projects">프로젝트</a></li>
+      <li><a href="#stack">기술 스택</a></li>
+      <li><a href="#education">학력</a></li>
+    </ul>
+  </aside>
+
+  <!-- ==========================================================
+       오른쪽 본문
+       ========================================================== -->
+  <main class="main">
+
+    <!-- ---------- 연구 ---------- -->
+    <section id="research">
+      <h2>연구</h2>
+      <div class="tl">
+
+        <div class="when">2025.03 ~ 현재</div>
+        <div class="what">
+          <h3>멀티모달 상품 속성-오피니언 마이닝을 통한 제어가능하고 설명가능한 추천시스템 개발</h3>
+          <ul class="bul">
+            <li>한국연구재단(NRF) / 과학기술정보통신부 지원 과제 (RS-2024-00345398), 석사과정 연구원으로 참여</li>
+          </ul>
+        </div>
+
+        <div class="when">2025.07 – 2026.05</div>
+        <div class="what">
+          <h3>OASIS – 개방형 어휘 기반 Aspect-Opinion-Sentiment 추출 벤치마크 구축 및 LLM 평가</h3>
+          <p class="org">OASIS: An Open-vocabulary Benchmark for Aspect-Opinion-Sentiment Extraction with Implicit-aspect Specificity · Findings of EMNLP 2026 · 공동 제1저자</p>
+          <!-- 논문 링크가 생기면 아래 줄의 주석을 풀고 href를 채우세요 -->
+          <!-- <p class="org"><a href="#" target="_blank" rel="noopener">논문 보기</a></p> -->
+          <ul class="bul">
+            <li>기존 데이터셋이 빈 값이나 사전 정의 카테고리로 처리하던 implicit aspect를 자유로운 명사구(open-vocabulary)로 다루는 벤치마크를 설계. 아마존 상품 리뷰 6,775개, 21,054개 튜플</li>
+            <li>LLM 후보 생성 → 사람 검수·수정 → 품질 검증으로 이어지는 파이프라인 설계</li>
+            <li>Exact Match 외에 의미적·문맥적 타당성을 반영하는 평가 기준 제안</li>
+            <li>Llama·Qwen 등 오픈소스 LLM에 대하여 LoRA fine-tuning 후 추론 성능 비교 및 분석</li>
+            <li>오픈소스 모델 및 API 모델(ChatGPT)에 대하여 zero/few-shot 환경에서 추론 성능 비교 및 분석</li>
+            <li>Aspect–Sentiment 쌍을 질의로 리뷰와 opinion span을 검색하는 ASOR 태스크를 정의하고, aspect 표현 방식만 달리한 통제 실험으로 open-vocabulary aspect가 평가 대상을 더 구체적으로 특정함을 검증</li>
+          </ul>
+        </div>
+
+
+        <div class="when">2026.07 ~ 현재</div>
+        <div class="what">
+          <h3>개방형 어휘 환경에서 Few-Shot 예시 선택 전략</h3>
+          <ul class="bul">
+            <li>입력 리뷰와 예시 간의 의미적 유사성 등 다양한 기준을 활용해 4개 이상의 Few-Shot 예시 선택 전략을 설계·비교 평가</li>
+            <li>LLM의 Aspect 추출 성능을 높이기 위한 few-shot 예시 선택 전략 연구</li>
+          </ul>
+        </div>
+
+        <div class="when">2026.01 ~ 현재</div>
+        <div class="what">
+          <h3>실시간 이벤트 기반 미디어 콘텐츠 추천 기술 개발</h3>
+          <p class="org">LG전자 산학과제</p>
+          <ul class="bul">
+            <li>RSS 기반 실시간성 뉴스 데이터 수집 과정 설계 및 구현</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ---------- 경력 ---------- -->
+    <section id="work">
+      <h2>경력</h2>
+      <div class="tl">
+        <div class="when">2022.08<br>– 2023.11</div>
+        <div class="what">
+          <h3>알체라 (Alchera)</h3>
+          <p class="org">Core Solution 팀 · Researcher</p>
+
+          <div class="sub">
+            <h4>FaceSDK — C++ 얼굴인식 SDK 개발·유지보수·다중 플랫폼 배포</h4>
+            <ul class="bul">
+              <li>SDK 개발·빌드·테스트·릴리즈·고객 기술 대응을 전담</li>
+              <li>CMake 기반 iOS / Android / Linux(x86, ARM) / Windows 멀티플랫폼 빌드</li>
+              <li>연구소 신규 모델과 추론 엔진(ONNX Runtime, TensorRT 등) 통합</li>
+              <li>Docker 기반 빌드 환경 운용</li>
+              <li>셸 스크립트 기반 빌드 구조를 Python으로 재구성하여 유지보수 시간 단축</li>
+              <li>금융·공공기관 포함 약 20개 고객사의 기술 문의와 요구사항 대응, KISA 바이오 인증 시험 참여</li>
+            </ul>
+            <div class="chips"><span>C++</span><span>CMake</span><span>Docker</span><span>Python</span><span>OpenCV</span><span>TensorRT</span><span>ONNX</span></div>
+          </div>
+
+          <div class="sub">
+            <h4>옆집코코 — 반려동물 산책 플랫폼 모바일 앱 개발·출시</h4>
+            <ul class="bul">
+              <li>Flutter 기반 iOS·Android 클라이언트 개발, App Store와 Google Play 정식 출시</li>
+              <li>실시간 채팅(WebSocket), 푸시 알림(Firebase), 카카오 OAuth 로그인, PASS 본인인증(외부 API) 구현</li>
+              <li>회원가입·프로필 등 주요 UX 흐름 화면 구현, 기획·디자인팀과 주간 목표를 공유하며 출시 일정 조율</li>
+            </ul>
+            <div class="chips"><span>Flutter</span><span>Dart</span><span>Firebase</span><span>WebSocket</span><span>OAuth</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- 프로젝트 ---------- -->
+    <section id="projects">
+      <h2>프로젝트</h2>
+      <p class="lead">학부 전공수업에서 진행한 팀 프로젝트입니다.</p>
+      <div class="proj">
+
+        <article>
+          <h3>Face-Mask-Synthesis System</h3>
+          <p class="meta">2021.04 – 2021.06 · 공개SW 프로젝트 · <a href="https://github.com/dunebi/2021-1-OSSP1-Debugger-4" target="_blank" rel="noopener">GitHub</a></p>
+          <p class="desc">딥러닝 기반 마스크 착용 얼굴 복원 애플리케이션</p>
+          <ul class="bul">
+            <li>사용자의 얼굴 회전 영상 프레임을 학습 데이터로 활용하여 마스크를 착용한 사진을 마스크 미착용 상태로 복원하는 오토인코더 모델 설계 및 학습</li>
+            <li>OpenCV 기반 영상 프레이밍과 마스크 가림 영역 검출 등 이미지 전처리 파이프라인 구축</li>
+            <li>중간·최종 발표 전담</li>
+          </ul>
+          <div class="chips"><span>Python</span><span>OpenCV</span></div>
+        </article>
+
+        <article>
+          <h3>지하철 중간 지점 탐색 알고리즘</h3>
+          <p class="meta">2021.05 · 컴퓨터알고리즘과실습 · <a href="https://github.com/dunebi/algorithm_project" target="_blank" rel="noopener">GitHub</a></p>
+          <p class="desc">이동시간 기반으로 여러 사용자의 지하철 중간지점을 추천하는 알고리즘</p>
+          <ul class="bul">
+            <li>백트래킹으로 사용자별 제한 시간 내 도달 가능한 역을 탐색하는 알고리즘 설계·구현</li>
+            <li>시간 범위를 점진적으로 넓혀 모든 사용자가 비슷한 소요 시간에 도달 가능한 최종 역 목록을 출력</li>
+          </ul>
+          <div class="chips"><span>Python</span></div>
+        </article>
+
+        <article>
+          <h3>블록체인 기반 투표 시스템</h3>
+          <p class="meta">2021.09 – 2021.12 · SW공학개론 · 팀장 · <a href="https://github.com/dunebi/AKB_Project" target="_blank" rel="noopener">GitHub</a></p>
+          <p class="desc">프라이빗 이더리움 네트워크 위에서 동작하는 투표 애플리케이션</p>
+          <ul class="bul">
+            <li>팀장으로 진행 상황과 역할 분담 조율</li>
+            <li>Solidity 스마트 컨트랙트 작성, geth로 프라이빗 이더리움 네트워크 구성</li>
+            <li>web3로 배포된 컨트랙트와 모바일 애플리케이션 연동</li>
+          </ul>
+          <div class="chips"><span>Solidity</span><span>Ethereum</span><span>geth</span><span>web3</span></div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ---------- 기술 스택 ---------- -->
+    <section id="stack">
+      <h2>기술 스택</h2>
+      <dl class="stack">
+        <dt>언어</dt>
+        <dd>Python, C++</dd>
+        <dt>ML / NLP</dt>
+        <dd>PyTorch, Hugging Face</dd>
+        <dt>빌드 / 인프라</dt>
+        <dd>CMake, Docker, Git</dd>
+        <dt>모바일 / 웹</dt>
+        <dd>Flutter, Firebase(FCM), WebSocket, OAuth</dd>
+      </dl>
+    </section>
+
+    <!-- ---------- 학력 ---------- -->
+    <section id="education">
+      <h2>학력</h2>
+      <div class="tl">
+        <div class="when">2025.03<br>– 2027.02<br>(졸업예정)</div>
+        <div class="what">
+          <h3>한양대학교 대학원</h3>
+          <p class="org">컴퓨터소프트웨어학과 석사과정 · Data Intelligence Lab · 4.0 / 4.5</p>
+        </div>
+        <div class="when">2017.03<br>– 2023.02</div>
+        <div class="what">
+          <h3>동국대학교</h3>
+          <p class="org">컴퓨터정보공학부 컴퓨터공학전공 학사 · 4.04 / 4.5 (전공 4.14) · 우등 졸업</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>마지막 수정 2026.09</footer>
+  </main>
+</div>
+</body>
+</html>
